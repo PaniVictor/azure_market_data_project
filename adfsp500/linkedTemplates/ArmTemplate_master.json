@@ -1,0 +1,70 @@
+{
+	"$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+	"contentVersion": "1.0.0.0",
+	"parameters": {
+		"factoryName": {
+			"type": "string",
+			"metadata": "Data Factory name",
+			"defaultValue": "adfsp500"
+		},
+		"ls_amazons3_marketdata_secretAccessKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'secretAccessKey' of 'ls_amazons3_marketdata'"
+		},
+		"ls_market_data_dl_accountKey": {
+			"type": "secureString",
+			"metadata": "Secure string for 'accountKey' of 'ls_market_data_dl'"
+		},
+		"ls_amazons3_marketdata_properties_typeProperties_accessKeyId": {
+			"type": "string",
+			"defaultValue": "AKIAR7B5YWS65SOH7FOV"
+		},
+		"ls_market_data_dl_properties_typeProperties_url": {
+			"type": "string",
+			"defaultValue": "https://datalakemarketdata.dfs.core.windows.net"
+		},
+		"containerUri": {
+			"type": "string",
+			"metadata": "URI to storage account containing linked ARM templates"
+		},
+		"containerSasToken": {
+			"type": "string",
+			"metadata": "Sas token to storage account containing linked ARM templates"
+		}
+	},
+	"variables": {
+		"factoryId": "[concat('Microsoft.DataFactory/factories/', parameters('factoryName'))]"
+	},
+	"resources": [
+		{
+			"name": "adfsp500_ArmTemplate_0",
+			"type": "Microsoft.Resources/deployments",
+			"apiVersion": "2018-02-01",
+			"properties": {
+				"mode": "incremental",
+				"templateLink": {
+					"uri": "[concat(parameters('containerUri'), '/ArmTemplate_0.json', parameters('containerSasToken'))]",
+					"contentVersion": "1.0.0.0"
+				},
+				"parameters": {
+					"factoryName": {
+						"value": "[parameters('factoryName')]"
+					},
+					"ls_amazons3_marketdata_secretAccessKey": {
+						"value": "[parameters('ls_amazons3_marketdata_secretAccessKey')]"
+					},
+					"ls_market_data_dl_accountKey": {
+						"value": "[parameters('ls_market_data_dl_accountKey')]"
+					},
+					"ls_amazons3_marketdata_properties_typeProperties_accessKeyId": {
+						"value": "[parameters('ls_amazons3_marketdata_properties_typeProperties_accessKeyId')]"
+					},
+					"ls_market_data_dl_properties_typeProperties_url": {
+						"value": "[parameters('ls_market_data_dl_properties_typeProperties_url')]"
+					}
+				}
+			},
+			"dependsOn": []
+		}
+	]
+}
