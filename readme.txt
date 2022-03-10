@@ -1,0 +1,1 @@
+The goal of this project is to ingest a market data (SP&500 from Kaggle) file that was preveious stored in AWS S3 into the Azure data lake and execute transformations in the data in order to integrate the data with PowerBI
