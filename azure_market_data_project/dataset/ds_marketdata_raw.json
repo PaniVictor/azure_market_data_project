@@ -1,0 +1,25 @@
+{
+	"name": "ds_marketdata_raw",
+	"properties": {
+		"linkedServiceName": {
+			"referenceName": "ls_amazons3_marketdata",
+			"type": "LinkedServiceReference"
+		},
+		"annotations": [],
+		"type": "DelimitedText",
+		"typeProperties": {
+			"location": {
+				"type": "AmazonS3Location",
+				"bucketName": "marketdataazure",
+				"fileName": "sp500.zip"
+			},
+			"columnDelimiter": ",",
+			"compressionCodec": "ZipDeflate",
+			"compressionLevel": "Optimal",
+			"escapeChar": "\\",
+			"firstRowAsHeader": true,
+			"quoteChar": "\""
+		},
+		"schema": []
+	}
+}
