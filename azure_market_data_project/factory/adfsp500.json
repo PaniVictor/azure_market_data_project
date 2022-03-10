@@ -1,0 +1,9 @@
+{
+	"name": "adfsp500",
+	"location": "brazilsouth",
+	"identity": {
+		"type": "SystemAssigned",
+		"principalId": "cd82d345-3c10-4583-8d42-b9eafbcac45d",
+		"tenantId": "e1de4a92-d24e-4c48-af2d-3461f0f140ff"
+	}
+}
